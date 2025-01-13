@@ -23,7 +23,7 @@ export const productSlice = createSlice({
         toast.info("Product is already in the cart", {
           autoClose: 1000,
         });
-        if (exist.amount >= action.payload.stock) {
+        if (exist.amount >= (action.payload.stock ?? 0)) {
           toast.warn("Maximum stock reached for this product!", {
             autoClose: 1000,
           });
@@ -38,8 +38,8 @@ export const productSlice = createSlice({
         }
         state.basket.push(action.payload);
         state.totalAmount++;
-        state.totalPrice += action.payload.price;
-        state.totalDiscountPrice += action.payload.discountPrice;
+        state.totalPrice += action.payload.price ?? 0;
+        state.totalDiscountPrice += action.payload.discountPrice ?? 0;
         toast.success("Product added successfully!", {
           autoClose: 1000,
         });
@@ -68,7 +68,7 @@ export const productSlice = createSlice({
         (product) => product.id === action.payload.id
       );
       if (exist) {
-        if (exist.amount >= action.payload.stock) {
+        if (exist.amount >= (action.payload.stock ?? 0)) {
           toast.warn("Maximum stock reached for this product!", {
             autoClose: 1000,
           });
@@ -76,11 +76,12 @@ export const productSlice = createSlice({
         }
         exist.amount++;
         exist.totalAmount++;
-        exist.totalPrice += exist.price;
-        exist.totalDiscountPrice += exist.discountPrice;
+        exist.totalPrice += exist.price ?? 0;
+        exist.totalDiscountPrice += exist.discountPrice ?? 0;
         state.totalAmount++;
-        state.totalPrice += exist.price;
-        state.totalDiscountPrice += exist.discountPrice;
+        state.totalPrice += exist.price ?? 0;
+        state.totalDiscountPrice += exist.discountPrice ?? 0;
+     
       }
     },
 
@@ -91,11 +92,12 @@ export const productSlice = createSlice({
       if (exist && exist.amount > 1) {
         exist.amount--;
         exist.totalAmount--;
-        exist.totalPrice -= exist.price;
-        exist.totalDiscountPrice -= exist.discountPrice;
+        exist.totalPrice -= exist.price ?? 0;
+        exist.totalDiscountPrice -= exist.discountPrice ?? 0;
         state.totalAmount--;
-        state.totalPrice -= exist.price;
-        state.totalDiscountPrice -= exist.discountPrice;
+        state.totalPrice -= exist.price ?? 0;
+        state.totalDiscountPrice -= exist.discountPrice ?? 0;
+        
       }
     },
 
