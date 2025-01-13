@@ -11,12 +11,9 @@ import { getBasket } from "../../features/slices/productSlice";
 import { copyColorCode } from "../../utils/CopyColor";
 import { Product } from "../../interfaces/data";
 import { useState } from "react";
-import { GlobalProps } from "../../interfaces/data";
-import { useGlobalContext } from "../../context/GlobalContext";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
 const Products: React.FC = () => {
-  const { loggedInUser } = useGlobalContext() as GlobalProps;
 
   const { datas, loading, error } = useFetchProducts();
   const basket = useSelector(getBasket);
