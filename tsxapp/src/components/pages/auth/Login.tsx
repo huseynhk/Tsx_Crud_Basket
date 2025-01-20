@@ -35,7 +35,7 @@ const Login = () => {
         toast.error("Please fill in all fields", {
           autoClose: 1000,
         });
-        setLoading(false); 
+        setLoading(false);
         return;
       }
 
@@ -70,7 +70,7 @@ const Login = () => {
         toast.error("Incorrect password. Please try again", {
           autoClose: 1500,
         });
-        setLoading(false); 
+        setLoading(false);
         return;
       }
 
@@ -151,7 +151,7 @@ const Login = () => {
           <div className=" flex justify-center items-center flex-col mb-3">
             <button
               onClick={handleLogin}
-              className="bg-gray-800 text-gray-200 py-2 px-4 rounded-md text-xl font-bold"
+              className="mt-1 bg-gray-800 text-gray-200 hover:bg-gray-700 p-3 rounded-md text-xl font-bold w-full transition duration-500 ease-in-out"
             >
               {loading ? "Loading..." : "Login"}
             </button>
